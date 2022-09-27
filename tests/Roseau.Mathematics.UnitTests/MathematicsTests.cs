@@ -6,17 +6,20 @@ public class MathematicsTests
     [TestMethod]
     public void EulerConstantValue_IsGood()
     {
-        Assert.AreEqual(2.7182818284590452353602874714m, Mathematics.E);
+        const decimal E = 2.7182818284590452353602874714m;
+        Assert.AreEqual(E, Mathematics.E);
     }
     [TestMethod]
     public void EulerConstantInverse_IsGood()
     {
-        Assert.AreEqual(1 / 2.7182818284590452353602874714m, Mathematics.EInverse);
+        const decimal EInverse = 1 / 2.7182818284590452353602874714m;
+        Assert.AreEqual(EInverse, Mathematics.EInverse);
     }
     [TestMethod]
     public void EpsilonConstant_IsGood()
     {
-        Assert.AreEqual(0.0000000000000000000000000001m, Mathematics.Epsilon);
+        const decimal Epsilon = 0.0000000000000000000000000001m;
+        Assert.AreEqual(Epsilon, Mathematics.Epsilon);
     }
     [TestMethod]
     [DataRow(-2)]
@@ -205,21 +208,11 @@ public class MathematicsTests
     [TestMethod]
     public void RepresentSameValue_WithSameValue_IsTrue()
     {
-        Assert.IsTrue(Decimal.Equals(Mathematics.E, (Mathematics.E*10 + 10)/10 - 1));
+        Assert.IsTrue(Mathematics.RepresentSameValue(Mathematics.E, (Mathematics.E * 10 + 10) / 10 - 1));
     }
     [TestMethod]
     public void RepresentSameValue_WithDifferentValues_IsFalse()
     {
-        Assert.IsFalse(Decimal.Equals(Mathematics.E, (Mathematics.E * 10 + 11) / 10 - 1));
-    }
-    [TestMethod]
-    public void Equals_WithSameValue_IsTrue()
-    {
-        Assert.IsTrue(Mathematics.E.Equals((Mathematics.E * 10 + 10) / 10 - 1));
-    }
-    [TestMethod]
-    public void Equals_WithDifferentValues_IsFalse()
-    {
-        Assert.IsFalse(Mathematics.E.Equals((Mathematics.E * 10 + 11) / 10 - 1));
+        Assert.IsFalse(Mathematics.RepresentSameValue(Mathematics.E, (Mathematics.E * 10 + 11) / 10 - 1));
     }
 }
