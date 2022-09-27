@@ -4,6 +4,21 @@ namespace Roseau.Mathematics.UnitTests;
 public class MathematicsTests
 {
     [TestMethod]
+    public void EulerConstantValue_IsGood()
+    {
+        Assert.AreEqual(2.7182818284590452353602874714m, Mathematics.E);
+    }
+    [TestMethod]
+    public void EulerConstantInverse_IsGood()
+    {
+        Assert.AreEqual(1 / 2.7182818284590452353602874714m, Mathematics.EInverse);
+    }
+    [TestMethod]
+    public void EpsilonConstant_IsGood()
+    {
+        Assert.AreEqual(0.0000000000000000000000000001m, Mathematics.Epsilon);
+    }
+    [TestMethod]
     [DataRow(-2)]
     public void Factorial_AreEqual_ThrowOutOfRange(int n)
     {
@@ -114,6 +129,11 @@ public class MathematicsTests
         Assert.AreEqual(exactResultIntPart * taylorSeriePart, Mathematics.Pow(Mathematics.E, 3 * Mathematics.E));
     }
     [TestMethod]
+    public void Exp_EqualsPowOfE()
+    {
+        Assert.AreEqual(Mathematics.Exp(3.5m), Mathematics.Pow(Mathematics.E, 3.5m));
+    }
+    [TestMethod]
     [DataRow(-1)]
     [DataRow(0)]
     public void Log_ValueIsEqualOrLessThanZero_ThrowException(int n)
@@ -164,5 +184,42 @@ public class MathematicsTests
         decimal exactResult = integerPart + taylorSeriePart;
 
         Assert.AreEqual(exactResult, Mathematics.Log(Mathematics.EInverse));
+    }
+    [TestMethod]
+    public void Log10_EqualsLogOf10()
+    {
+        Assert.AreEqual(Mathematics.Log10(3.5m), Mathematics.Log(10m, 3.5m));
+    }
+    [TestMethod]
+    public void LogBaseA_EqualsLogOfParameterDividedByLogOfA()
+    {
+        Assert.AreEqual(Mathematics.Log(2,3.5m), Mathematics.Log(3.5m)/ Mathematics.Log(2));
+    }
+    [TestMethod]
+    [DataRow(5)]
+    [DataRow(6)]
+    public void IsEven_IsOppositeOfIsOdd_IsTrue(int n)
+    {
+        Assert.IsTrue(Mathematics.IsOdd(n) == !Mathematics.IsEven(n));
+    }
+    [TestMethod]
+    public void RepresentSameValue_WithSameValue_IsTrue()
+    {
+        Assert.IsTrue(Decimal.Equals(Mathematics.E, (Mathematics.E*10 + 10)/10 - 1));
+    }
+    [TestMethod]
+    public void RepresentSameValue_WithDifferentValues_IsFalse()
+    {
+        Assert.IsFalse(Decimal.Equals(Mathematics.E, (Mathematics.E * 10 + 11) / 10 - 1));
+    }
+    [TestMethod]
+    public void Equals_WithSameValue_IsTrue()
+    {
+        Assert.IsTrue(Mathematics.E.Equals((Mathematics.E * 10 + 10) / 10 - 1));
+    }
+    [TestMethod]
+    public void Equals_WithDifferentValues_IsFalse()
+    {
+        Assert.IsFalse(Mathematics.E.Equals((Mathematics.E * 10 + 11) / 10 - 1));
     }
 }
