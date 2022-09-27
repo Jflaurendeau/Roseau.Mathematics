@@ -65,7 +65,6 @@ public static class Mathematics
     public static bool IsOdd(int n) => n % 2 == 1;
     public static bool IsEven(int n) => !IsOdd(n);
     public static bool RepresentSameValue(decimal value1, decimal value2) => (value1 - value2).Equals(Decimal.Zero);
-    public static bool Equals(this decimal value1, double value2) => Math.Abs(value1 - Convert.ToDecimal(value2)) < Epsilon;
     #endregion
     #endregion
 
