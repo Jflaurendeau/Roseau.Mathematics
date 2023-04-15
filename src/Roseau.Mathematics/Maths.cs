@@ -2,7 +2,7 @@
 
 namespace Roseau.Mathematics;
 
-public static class Mathematics
+public static class Maths
 {
     // Precision of decimal type is 28-29 digits
     #region public Fields
