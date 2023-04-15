@@ -8,7 +8,7 @@
 	<Description>Helper methods for decimal type that are not available in the Math class</Description>
 	<PackageProjectUrl>https://github.com/Jflaurendeau/Roseau.Mathematics</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/Jflaurendeau/Roseau.Mathematics.git</RepositoryUrl>
-	<VersionPrefix>0.1.0</VersionPrefix>
+	<VersionPrefix>0.2.0</VersionPrefix>
 	<AssemblyVersion>$(Version)</AssemblyVersion>
 	<FileVersion>$(Version)</FileVersion>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -29,8 +29,10 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.45.0.54064">
+	  <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0">
+		  <PrivateAssets>Compile;Contentfiles;Build;Analyzers</PrivateAssets>
+	  </PackageReference>
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.55.0.65544">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

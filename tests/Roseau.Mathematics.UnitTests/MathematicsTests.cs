@@ -7,25 +7,25 @@ public class MathematicsTests
     public void EulerConstantValue_IsGood()
     {
         const decimal E = 2.7182818284590452353602874714m;
-        Assert.AreEqual(E, Mathematics.E);
+        Assert.AreEqual(E, Maths.E);
     }
     [TestMethod]
     public void EulerConstantInverse_IsGood()
     {
         const decimal EInverse = 1 / 2.7182818284590452353602874714m;
-        Assert.AreEqual(EInverse, Mathematics.EInverse);
+        Assert.AreEqual(EInverse, Maths.EInverse);
     }
     [TestMethod]
     public void EpsilonConstant_IsGood()
     {
         const decimal Epsilon = 0.0000000000000000000000000001m;
-        Assert.AreEqual(Epsilon, Mathematics.Epsilon);
+        Assert.AreEqual(Epsilon, Maths.Epsilon);
     }
     [TestMethod]
     [DataRow(-2)]
     public void Factorial_AreEqual_ThrowOutOfRange(int n)
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Mathematics.Factorial(n));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Maths.Factorial(n));
     }
     [TestMethod]
     [DataRow(0, 1)]
@@ -34,7 +34,7 @@ public class MathematicsTests
     [DataRow(10, 3628800)]
     public void Factorial_AreEqual_ToFeededResult(int n, int result)
     {
-        Assert.AreEqual(result, Mathematics.Factorial(n));
+        Assert.AreEqual(result, Maths.Factorial(n));
     }
 
     [TestMethod]
@@ -42,7 +42,7 @@ public class MathematicsTests
     [DataRow(-1)]
     public void Pow_ValueIsZeroAndExponentIsEqualOrLessThanZero_ThrowException(int n)
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Mathematics.Pow(0m, n));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Maths.Pow(0m, n));
     }
     [TestMethod]
     [DataRow(1)]
@@ -50,44 +50,44 @@ public class MathematicsTests
     [DataRow(31)]
     public void Pow_ValueIsZeroAndExponentIsMoreThanZero_EqualsToZero(int n)
     {
-        Assert.AreEqual(0m, Mathematics.Pow(0m, n));
+        Assert.AreEqual(0m, Maths.Pow(0m, n));
     }
     [TestMethod]
     [DataRow(-1)]
     [DataRow(-7)]
     public void Pow_ValueIsExtremeAndExponentIsLessOrEqualToMinusOne_EqualsToZero(int n)
     {
-        Assert.AreEqual(0m, Mathematics.Pow(79228162514264337593543950335m, n));
-        Assert.AreEqual(0m, Mathematics.Pow(-79228162514264337593543950335m, n));
+        Assert.AreEqual(0m, Maths.Pow(79228162514264337593543950335m, n));
+        Assert.AreEqual(0m, Maths.Pow(-79228162514264337593543950335m, n));
     }
     [TestMethod]
     [DataRow(1)]
     [DataRow(7)]
     public void Pow_ValueIsMaximumAndExponentIsMoreOrEqualToOne_EqualsToMaximum(int n)
     {
-        Assert.AreEqual(79228162514264337593543950335m, Mathematics.Pow(79228162514264337593543950335m, n));
+        Assert.AreEqual(79228162514264337593543950335m, Maths.Pow(79228162514264337593543950335m, n));
     }
     [TestMethod]
     [DataRow(1)]
     [DataRow(7)]
     public void Pow_ValueIsMinimumAndExponentIsOddAndMoreOrEqualToOne_EqualsToMinimum(int n)
     {
-        Assert.AreEqual(-79228162514264337593543950335m, Mathematics.Pow(-79228162514264337593543950335m, n));
+        Assert.AreEqual(-79228162514264337593543950335m, Maths.Pow(-79228162514264337593543950335m, n));
     }
     [TestMethod]
     [DataRow(2)]
     [DataRow(8)]
     public void Pow_ValueIsMinimumAndExponentIsEvenAndMoreThanOne_EqualsToMinimum(int n)
     {
-        Assert.AreEqual(79228162514264337593543950335m, Mathematics.Pow(-79228162514264337593543950335m, n));
+        Assert.AreEqual(79228162514264337593543950335m, Maths.Pow(-79228162514264337593543950335m, n));
     }
     [TestMethod]
     public void Pow_ValueIsNotZeroAndExponentIsZero_EqualsToOne()
     {
-        Assert.AreEqual(Decimal.One, Mathematics.Pow(-79228162514264337593543950335m, Decimal.Zero));
-        Assert.AreEqual(Decimal.One, Mathematics.Pow(79228162514264337593543950335m, Decimal.Zero));
-        Assert.AreEqual(Decimal.One, Mathematics.Pow(-50, Decimal.Zero));
-        Assert.AreEqual(Decimal.One, Mathematics.Pow(50, Decimal.Zero));
+        Assert.AreEqual(Decimal.One, Maths.Pow(-79228162514264337593543950335m, Decimal.Zero));
+        Assert.AreEqual(Decimal.One, Maths.Pow(79228162514264337593543950335m, Decimal.Zero));
+        Assert.AreEqual(Decimal.One, Maths.Pow(-50, Decimal.Zero));
+        Assert.AreEqual(Decimal.One, Maths.Pow(50, Decimal.Zero));
     }
     [TestMethod]
     [DataRow(-7)]
@@ -97,14 +97,14 @@ public class MathematicsTests
     {
         // Arrange
         decimal exactResults = 1;
-        decimal theBase = n < 0 ? Mathematics.EInverse : Mathematics.E;
+        decimal theBase = n < 0 ? Maths.EInverse : Maths.E;
 
         // Act
         for (int i = 0; i < Math.Abs(n); i++)
             exactResults *= theBase;
 
         // Assert 
-        Assert.AreEqual(exactResults, Mathematics.Pow(Mathematics.E, n));
+        Assert.AreEqual(exactResults, Maths.Pow(Maths.E, n));
     }
     [TestMethod]
     public void Pow_DecimalsToDecimalPower_EqualsToGoodResult()
@@ -125,33 +125,33 @@ public class MathematicsTests
         // Act
         for (int i = 0; i < 8; i++)
         {
-            exactResultIntPart *= Mathematics.E;
+            exactResultIntPart *= Maths.E;
         }
 
         // Assert 
-        Assert.AreEqual(exactResultIntPart * taylorSeriePart, Mathematics.Pow(Mathematics.E, 3 * Mathematics.E));
+        Assert.AreEqual(exactResultIntPart * taylorSeriePart, Maths.Pow(Maths.E, 3 * Maths.E));
     }
     [TestMethod]
     public void Exp_EqualsPowOfE()
     {
-        Assert.AreEqual(Mathematics.Exp(3.5m), Mathematics.Pow(Mathematics.E, 3.5m));
+        Assert.AreEqual(Maths.Exp(3.5m), Maths.Pow(Maths.E, 3.5m));
     }
     [TestMethod]
     [DataRow(-1)]
     [DataRow(0)]
     public void Log_ValueIsEqualOrLessThanZero_ThrowException(int n)
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Mathematics.Log(n));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Maths.Log(n));
     }
     [TestMethod]
     public void Log_ValueIsEqualToOne_ReturnsZero()
     {
-        Assert.AreEqual(Decimal.Zero, Mathematics.Log(1));
+        Assert.AreEqual(Decimal.Zero, Maths.Log(1));
     }
     [TestMethod]
     public void Log_ValueIsEqualToE_ReturnsOne()
     {
-        Assert.AreEqual(Decimal.One, Mathematics.Log(Mathematics.E));
+        Assert.AreEqual(Decimal.One, Maths.Log(Maths.E));
     }
     [TestMethod]
     public void Log_ValueIsEqualOrMoreThan2_ReturnsLnOf2()
@@ -168,7 +168,7 @@ public class MathematicsTests
         // Différence minimum créer par les erreurs d'arrondies.
         decimal exactResult = integerPart + taylorSeriePart;
 
-        Assert.AreEqual(exactResult, Mathematics.Log(2));
+        Assert.AreEqual(exactResult, Maths.Log(2));
     }
     [TestMethod]
     public void Log_ValueIsLessThanTwo_WhereValueIsEqualTo_E_ToPowerOf_MinusOne_ReturnsMinusOne()
@@ -186,33 +186,33 @@ public class MathematicsTests
         // Différence minimum créer par les erreurs d'arrondies.
         decimal exactResult = integerPart + taylorSeriePart;
 
-        Assert.AreEqual(exactResult, Mathematics.Log(Mathematics.EInverse));
+        Assert.AreEqual(exactResult, Maths.Log(Maths.EInverse));
     }
     [TestMethod]
     public void Log10_EqualsLogOf10()
     {
-        Assert.AreEqual(Mathematics.Log10(3.5m), Mathematics.Log(10m, 3.5m));
+        Assert.AreEqual(Maths.Log10(3.5m), Maths.Log(10m, 3.5m));
     }
     [TestMethod]
     public void LogBaseA_EqualsLogOfParameterDividedByLogOfA()
     {
-        Assert.AreEqual(Mathematics.Log(2,3.5m), Mathematics.Log(3.5m)/ Mathematics.Log(2));
+        Assert.AreEqual(Maths.Log(2,3.5m), Maths.Log(3.5m)/ Maths.Log(2));
     }
     [TestMethod]
     [DataRow(5)]
     [DataRow(6)]
     public void IsEven_IsOppositeOfIsOdd_IsTrue(int n)
     {
-        Assert.IsTrue(Mathematics.IsOdd(n) == !Mathematics.IsEven(n));
+        Assert.IsTrue(Maths.IsOdd(n) == !Maths.IsEven(n));
     }
     [TestMethod]
     public void RepresentSameValue_WithSameValue_IsTrue()
     {
-        Assert.IsTrue(Mathematics.RepresentSameValue(Mathematics.E, (Mathematics.E * 10 + 10) / 10 - 1));
+        Assert.IsTrue(Maths.RepresentSameValue(Maths.E, (Maths.E * 10 + 10) / 10 - 1));
     }
     [TestMethod]
     public void RepresentSameValue_WithDifferentValues_IsFalse()
     {
-        Assert.IsFalse(Mathematics.RepresentSameValue(Mathematics.E, (Mathematics.E * 10 + 11) / 10 - 1));
+        Assert.IsFalse(Maths.RepresentSameValue(Maths.E, (Maths.E * 10 + 11) / 10 - 1));
     }
 }
